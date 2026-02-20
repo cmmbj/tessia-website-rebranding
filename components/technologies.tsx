@@ -30,22 +30,20 @@ function TechPill({
 }) {
   return (
     <div
-      className={`flex items-center gap-3 px-5 py-3 rounded-2xl bg-secondary/80 hover:bg-indigo/5 border border-border/50 hover:border-indigo/20 transition-all duration-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo/5 cursor-default ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
+      className={`flex flex-col items-center justify-center p-4 transition-all duration-500 hover:-translate-y-1 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
         }`}
       style={{ transitionDelay: `${index * 60}ms` }}
+      title={tech.name}
     >
       {tech.logo ? (
-        <div className="w-8 h-8 flex items-center justify-center flex-shrink-0">
-          <img src={tech.logo} alt={tech.name} className="max-w-full max-h-full object-contain" />
+        <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300">
+          <img src={tech.logo} alt={tech.name} className="max-w-full max-h-full object-contain drop-shadow-sm" />
         </div>
       ) : (
-        <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center text-xs font-bold text-muted-foreground flex-shrink-0">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-foreground/5 flex items-center justify-center text-lg font-black text-muted-foreground flex-shrink-0">
           {tech.short.slice(0, 2)}
         </div>
       )}
-      <span className="text-sm font-medium text-foreground whitespace-nowrap">
-        {tech.name}
-      </span>
     </div>
   )
 }
