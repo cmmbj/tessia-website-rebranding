@@ -3,20 +3,20 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 const techLogos = [
-  { name: "Google Cloud", short: "GCP" },
-  { name: "AWS", short: "AWS" },
-  { name: "Azure", short: "Azure" },
-  { name: "Airflow", short: "Airflow" },
-  { name: "TensorFlow", short: "TF" },
-  { name: "Keras", short: "Keras" },
-  { name: "PyTorch", short: "PyTorch" },
+  { name: "Google Cloud", short: "GCP", logo: "/tech-logos/gcp.png" },
+  { name: "AWS", short: "AWS", logo: "/tech-logos/aws.png" },
+  { name: "Azure", short: "Azure", logo: "/tech-logos/azure.png" },
+  { name: "Airflow", short: "Airflow", logo: "/tech-logos/airflow.png" },
+  { name: "TensorFlow", short: "TF", logo: "/tech-logos/tensorflow.png" },
+  { name: "Keras", short: "Keras", logo: "/tech-logos/keras.png" },
+  { name: "PyTorch", short: "PyTorch", logo: "/tech-logos/pytorch.png" },
   { name: "OpenCV", short: "OpenCV" },
-  { name: "Python", short: "Python" },
-  { name: "OpenAI", short: "OpenAI" },
-  { name: "Meta AI", short: "Meta" },
+  { name: "Python", short: "Python", logo: "/tech-logos/python.png" },
+  { name: "OpenAI", short: "OpenAI", logo: "/tech-logos/openai.png" },
+  { name: "Meta AI", short: "Meta", logo: "/tech-logos/meta.png" },
   { name: "Mistral AI", short: "Mistral" },
-  { name: "Gemini", short: "Gemini" },
-  { name: "Claude", short: "Claude" },
+  { name: "Gemini", short: "Gemini", logo: "/tech-logos/gemini.png" },
+  { name: "Claude", short: "Claude", logo: "/tech-logos/claude.png" },
 ]
 
 function TechPill({
@@ -30,15 +30,19 @@ function TechPill({
 }) {
   return (
     <div
-      className={`flex items-center gap-3 px-5 py-3 rounded-2xl bg-secondary/80 hover:bg-indigo/5 border border-border/50 hover:border-indigo/20 transition-all duration-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo/5 cursor-default ${
-        isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
-      }`}
+      className={`flex items-center gap-3 px-5 py-3 rounded-2xl bg-secondary/80 hover:bg-indigo/5 border border-border/50 hover:border-indigo/20 transition-all duration-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo/5 cursor-default ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
+        }`}
       style={{ transitionDelay: `${index * 60}ms` }}
     >
-      {/* Icon placeholder */}
-      <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center text-xs font-bold text-muted-foreground">
-        {tech.short.slice(0, 2)}
-      </div>
+      {tech.logo ? (
+        <div className="w-8 h-8 flex items-center justify-center p-0.5 bg-white rounded flex-shrink-0">
+          <img src={tech.logo} alt={tech.name} className="max-w-full max-h-full object-contain" />
+        </div>
+      ) : (
+        <div className="w-8 h-8 rounded-lg bg-foreground/5 flex items-center justify-center text-xs font-bold text-muted-foreground flex-shrink-0">
+          {tech.short.slice(0, 2)}
+        </div>
+      )}
       <span className="text-sm font-medium text-foreground whitespace-nowrap">
         {tech.name}
       </span>
@@ -61,11 +65,10 @@ export function Technologies() {
         {/* Section header */}
         <div
           ref={titleRef}
-          className={`text-center mb-16 transition-all duration-700 ${
-            titleVisible
+          className={`text-center mb-16 transition-all duration-700 ${titleVisible
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-8"
-          }`}
+            }`}
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo/10 text-xs font-medium text-indigo tracking-wide uppercase mb-6">
             Notre stack technique
