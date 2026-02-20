@@ -10,11 +10,11 @@ const techLogos = [
   { name: "TensorFlow", short: "TF", logo: "/tech-logos/tensorflow.png" },
   { name: "Keras", short: "Keras", logo: "/tech-logos/keras.png" },
   { name: "PyTorch", short: "PyTorch", logo: "/tech-logos/pytorch.png" },
-  { name: "OpenCV", short: "OpenCV" },
+  { name: "OpenCV", short: "OpenCV", logo: "/tech-logos/opencv.png" },
   { name: "Python", short: "Python", logo: "/tech-logos/python.png" },
   { name: "OpenAI", short: "OpenAI", logo: "/tech-logos/openai.png" },
   { name: "Meta AI", short: "Meta", logo: "/tech-logos/meta.png" },
-  { name: "Mistral AI", short: "Mistral" },
+  { name: "Mistral AI", short: "Mistral", logo: "/tech-logos/mistral.png" },
   { name: "Gemini", short: "Gemini", logo: "/tech-logos/gemini.png" },
   { name: "Claude", short: "Claude", logo: "/tech-logos/claude.png" },
 ]
@@ -35,7 +35,7 @@ function TechPill({
       style={{ transitionDelay: `${index * 60}ms` }}
     >
       {tech.logo ? (
-        <div className="w-8 h-8 flex items-center justify-center p-0.5 bg-white rounded flex-shrink-0">
+        <div className="w-8 h-8 flex items-center justify-center flex-shrink-0">
           <img src={tech.logo} alt={tech.name} className="max-w-full max-h-full object-contain" />
         </div>
       ) : (
@@ -66,8 +66,8 @@ export function Technologies() {
         <div
           ref={titleRef}
           className={`text-center mb-16 transition-all duration-700 ${titleVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-8"
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8"
             }`}
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo/10 text-xs font-medium text-indigo tracking-wide uppercase mb-6">
