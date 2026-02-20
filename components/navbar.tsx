@@ -4,10 +4,10 @@ import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 
 const navLinks = [
-  { label: "Nos Services", href: "#services" },
-  { label: "Technologies", href: "#technologies" },
-  { label: "Notre Methode", href: "#methode" },
-  { label: "L'Equipe", href: "#equipe" },
+  { label: "Nos Services", href: "/services" },
+  { label: "Technologies", href: "/technologies" },
+  { label: "Notre Methode", href: "/methode" },
+  { label: "L'Equipe", href: "/equipe" },
 ]
 
 export function Navbar() {
@@ -25,13 +25,13 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-          ? "bg-navy/90 backdrop-blur-xl border-b border-indigo/10 py-3"
-          : "bg-transparent py-5"
+        ? "bg-navy/90 backdrop-blur-xl border-b border-indigo/10 py-3"
+        : "bg-transparent py-5"
         }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
+        <a href="/" className="flex items-center gap-2 group">
           <img src="/logo-tessia.svg" alt="Tessia" className="h-8 w-auto" />
         </a>
 

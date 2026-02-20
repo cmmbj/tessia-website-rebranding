@@ -63,9 +63,8 @@ export function Hero() {
           <div className="flex flex-col gap-8">
             {/* Badge */}
             <div
-              className={`inline-flex self-start items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-medium text-indigo-light tracking-wide uppercase transition-all duration-700 ${
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}
+              className={`inline-flex self-start items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-medium text-indigo-light tracking-wide uppercase transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                }`}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-indigo animate-pulse" />
               Solutions IA pour la Supply Chain
@@ -73,9 +72,8 @@ export function Hero() {
 
             {/* Heading */}
             <h1
-              className={`transition-all duration-700 delay-100 ${
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
               <span className="block text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-primary-foreground leading-[1.1]">
                 {"L'ingenierie"}
@@ -93,9 +91,8 @@ export function Hero() {
 
             {/* Description */}
             <p
-              className={`text-base lg:text-lg leading-relaxed text-slate-light max-w-lg transition-all duration-700 delay-200 ${
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`text-base lg:text-lg leading-relaxed text-slate-light max-w-lg transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
               Tessia developpe des solutions IA sur mesure pour optimiser vos
               operations, anticiper les risques et renforcer la resilience de
@@ -104,9 +101,8 @@ export function Hero() {
 
             {/* Highlights */}
             <div
-              className={`flex flex-col gap-4 transition-all duration-700 delay-300 ${
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`flex flex-col gap-4 transition-all duration-700 delay-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
               {highlights.map((item, i) => (
                 <div
@@ -126,9 +122,8 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <div
-              className={`flex flex-wrap gap-4 mt-2 transition-all duration-700 delay-400 ${
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`flex flex-wrap gap-4 mt-2 transition-all duration-700 delay-400 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
             >
               <a
                 href="#contact"
@@ -151,9 +146,8 @@ export function Hero() {
 
           {/* Right Column - Visual */}
           <div
-            className={`hidden lg:flex items-center justify-center transition-all duration-1000 delay-500 ${
-              mounted ? "opacity-100 translate-x-0 scale-100" : "opacity-0 translate-x-10 scale-95"
-            }`}
+            className={`hidden lg:flex items-center justify-center transition-all duration-1000 delay-500 ${mounted ? "opacity-100 translate-x-0 scale-100" : "opacity-0 translate-x-10 scale-95"
+              }`}
           >
             <div className="relative w-full max-w-lg">
               {/* Central orb */}

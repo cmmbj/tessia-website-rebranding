@@ -20,6 +20,9 @@ export const viewport: Viewport = {
   themeColor: '#0a0e27',
 }
 
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,7 +31,9 @@ export default function RootLayout({
   return (
     <html lang="fr" className="scroll-smooth">
       <body className={`${inter.variable} font-sans antialiased`}>
+        <Navbar />
         {children}
+        <Footer />
         <Analytics />
       </body>
     </html>
