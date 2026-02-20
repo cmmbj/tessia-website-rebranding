@@ -66,33 +66,30 @@ function MemberCard({ member, isCeo = false }: { member: TeamMember; isCeo?: boo
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
                 <div
-                    className={`group flex items-center justify-center cursor-pointer transition-all duration-500`}
+                    className={`group flex items-center justify-center cursor-pointer transition-all duration-300`}
                 >
-                    <div className={`relative overflow-hidden bg-navy/50 backdrop-blur-sm border border-indigo/10 flex flex-col items-center justify-center p-8 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo/20 ${isCeo ? 'rounded-[3rem] w-full max-w-sm' : 'rounded-3xl w-full aspect-square'}`}>
+                    {/* Outer Card */}
+                    <div className={`bg-[#888e9f] flex flex-col items-center p-6 sm:p-8 transition-transform hover:-translate-y-1 ${isCeo ? 'rounded-[3rem] w-full max-w-sm' : 'rounded-[2.5rem] w-full max-w-[280px]'}`}>
 
-                        {/* Visual Placeholder or Real Photo */}
-                        <div className={`relative mb-6 flex items-center justify-center bg-gradient-to-br ${getAvatarGradient(member.name)} rounded-[2rem] shadow-inner overflow-hidden ${isCeo ? 'w-40 h-40' : 'w-32 h-32'}`}>
+                        {/* Image Container */}
+                        <div className={`relative mb-6 bg-white flex items-center justify-center overflow-hidden ${isCeo ? 'rounded-[2.5rem] w-48 h-48 sm:w-56 sm:h-56' : 'rounded-3xl w-40 h-40 sm:w-48 sm:h-48'}`}>
                             {member.image ? (
-                                <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                                <img src={member.image} alt={member.name} className="w-full h-full object-cover grayscale brightness-110 contrast-125 transition-all duration-500 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100" />
                             ) : (
-                                <>
-                                    <div className="absolute inset-0 bg-black/10 mix-blend-overlay"></div>
-                                    <span className={`font-black text-white/90 uppercase tracking-tighter ${isCeo ? 'text-6xl' : 'text-5xl'}`}>
-                                        {member.name.charAt(0)}
-                                    </span>
-                                </>
+                                <span className={`font-black text-slate-300 uppercase tracking-tighter ${isCeo ? 'text-7xl' : 'text-6xl'}`}>
+                                    {member.name.charAt(0)}
+                                </span>
                             )}
                         </div>
 
                         {/* Info */}
-                        <div className="text-center">
-                            <h3 className={`font-bold text-foreground mb-1 group-hover:text-indigo-light transition-colors ${isCeo ? 'text-3xl' : 'text-xl'}`}>{member.name}</h3>
-                            <p className={`font-medium ${isCeo ? 'text-indigo text-lg' : 'text-muted-foreground text-sm'}`}>{member.role}</p>
-                        </div>
+                        <div className="text-center flex flex-col items-center w-full">
+                            <h3 className={`font-bold text-[#a5b4fc] tracking-wide mb-1 transition-colors ${isCeo ? 'text-4xl' : 'text-3xl'}`}>{member.name}</h3>
+                            <p className={`font-medium mb-4 uppercase tracking-widest ${isCeo ? 'text-[#818cf8] text-base' : 'text-[#818cf8] text-sm'}`}>{member.role}</p>
 
-                        {/* Hover indication */}
-                        <div className="absolute bottom-4 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 text-xs font-semibold text-indigo tracking-widest uppercase flex items-center gap-1">
-                            En savoir plus <ArrowRight size={14} />
+                            <div className="text-[10px] sm:text-xs font-bold text-[#818cf8] tracking-[0.2em] uppercase flex items-center justify-center gap-2 group-hover:text-white transition-colors">
+                                EN SAVOIR PLUS <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                            </div>
                         </div>
                     </div>
                 </div>
