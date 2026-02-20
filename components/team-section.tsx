@@ -36,6 +36,7 @@ type TeamMember = {
     role: string
     bio: string
     linkedin: string
+    image?: string
 }
 
 const ceo: TeamMember = {
@@ -43,18 +44,19 @@ const ceo: TeamMember = {
     role: "CEO",
     bio: "Visionnaire et leader, Mikael guide Tessia vers l'excellence en alliant data science et logistique pour revolutionner la supply chain.",
     linkedin: "https://linkedin.com",
+    image: "/team-photos/mikael.jpg"
 }
 
 const teamMembers: TeamMember[] = [
-    { name: "Thomas", role: "Sales Manager", bio: "Specialiste en developpement commercial B2B, Thomas accompagne les entreprises dans l'adoption de nos solutions IA innovantes.", linkedin: "https://linkedin.com" },
-    { name: "Dimitri", role: "Project Manager", bio: "Expert en pilotage de projets tech, Dimitri s'assure de la bonne livraison des solutions tout en respectant l'agilite et les delais.", linkedin: "https://linkedin.com" },
-    { name: "Donatien", role: "Product Manager", bio: "Au croisement des besoins utilisateurs et de la tech, Donatien concoit des produits intuitifs et performants.", linkedin: "https://linkedin.com" },
-    { name: "Maxence", role: "Lead Developer", bio: "Architecte logiciel passionne, Maxence orchestre l'equipe tech et s'assure de la robustesse des solutions de Tessia.", linkedin: "https://linkedin.com" },
-    { name: "Tom", role: "Full Stack Developer", bio: "Developpeur polyvalent, Tom intervient aussi bien sur la creation d'interfaces fluides que sur la conception back-end.", linkedin: "https://linkedin.com" },
-    { name: "Axel", role: "Data Scientist", bio: "Genie de la donnee, Axel elabore et entraine les modeles de machine learning qui offrent une intelligence predictive inegalee.", linkedin: "https://linkedin.com" },
-    { name: "Jules", role: "Full Stack Developer", bio: "Createur de solutions web, Jules transforme des architectures complexes en applications rapides et securisees.", linkedin: "https://linkedin.com" },
-    { name: "Nicolas", role: "Cybersecurity Analyst", bio: "Gardien de l'infrastructure, Nicolas met en place les meilleures pratiques pour proteger nos environnements et vos donnees.", linkedin: "https://linkedin.com" },
-    { name: "Louis", role: "Account Executive", bio: "Point de contact privilegie de nos clients, Louis veille a la reussite de nos partenariats sur le long terme.", linkedin: "https://linkedin.com" },
+    { name: "Thomas", role: "Sales Manager", bio: "Specialiste en developpement commercial B2B, Thomas accompagne les entreprises dans l'adoption de nos solutions IA innovantes.", linkedin: "https://linkedin.com", image: "/team-photos/thomas.jpeg" },
+    { name: "Dimitri", role: "Project Manager", bio: "Expert en pilotage de projets tech, Dimitri s'assure de la bonne livraison des solutions tout en respectant l'agilite et les delais.", linkedin: "https://linkedin.com", image: "/team-photos/dimitri.jpeg" },
+    { name: "Donatien", role: "Product Manager", bio: "Au croisement des besoins utilisateurs et de la tech, Donatien concoit des produits intuitifs et performants.", linkedin: "https://linkedin.com", image: "/team-photos/donatien.png" },
+    { name: "Maxence", role: "Lead Developer", bio: "Architecte logiciel passionne, Maxence orchestre l'equipe tech et s'assure de la robustesse des solutions de Tessia.", linkedin: "https://linkedin.com", image: "/team-photos/maxence.png" },
+    { name: "Tom", role: "Full Stack Developer", bio: "Developpeur polyvalent, Tom intervient aussi bien sur la creation d'interfaces fluides que sur la conception back-end.", linkedin: "https://linkedin.com", image: "/team-photos/tom.jpeg" },
+    { name: "Axel", role: "Data Scientist", bio: "Genie de la donnee, Axel elabore et entraine les modeles de machine learning qui offrent une intelligence predictive inegalee.", linkedin: "https://linkedin.com", image: "/team-photos/axel.png" },
+    { name: "Jules", role: "Full Stack Developer", bio: "Createur de solutions web, Jules transforme des architectures complexes en applications rapides et securisees.", linkedin: "https://linkedin.com", image: "/team-photos/jules.jpeg" },
+    { name: "Nicolas", role: "Cybersecurity Analyst", bio: "Gardien de l'infrastructure, Nicolas met en place les meilleures pratiques pour proteger nos environnements et vos donnees.", linkedin: "https://linkedin.com", image: "/team-photos/nicolas.jpeg" },
+    { name: "Louis", role: "Account Executive", bio: "Point de contact privilegie de nos clients, Louis veille a la reussite de nos partenariats sur le long terme.", linkedin: "https://linkedin.com", image: "/team-photos/louis.jpeg" },
 ]
 
 function MemberCard({ member, isCeo = false }: { member: TeamMember; isCeo?: boolean }) {
@@ -68,12 +70,18 @@ function MemberCard({ member, isCeo = false }: { member: TeamMember; isCeo?: boo
                 >
                     <div className={`relative overflow-hidden bg-navy/50 backdrop-blur-sm border border-indigo/10 flex flex-col items-center justify-center p-8 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo/20 ${isCeo ? 'rounded-[3rem] w-full max-w-sm' : 'rounded-3xl w-full aspect-square'}`}>
 
-                        {/* Visual Placeholder */}
+                        {/* Visual Placeholder or Real Photo */}
                         <div className={`relative mb-6 flex items-center justify-center bg-gradient-to-br ${getAvatarGradient(member.name)} rounded-[2rem] shadow-inner overflow-hidden ${isCeo ? 'w-40 h-40' : 'w-32 h-32'}`}>
-                            <div className="absolute inset-0 bg-black/10 mix-blend-overlay"></div>
-                            <span className={`font-black text-white/90 uppercase tracking-tighter ${isCeo ? 'text-6xl' : 'text-5xl'}`}>
-                                {member.name.charAt(0)}
-                            </span>
+                            {member.image ? (
+                                <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                            ) : (
+                                <>
+                                    <div className="absolute inset-0 bg-black/10 mix-blend-overlay"></div>
+                                    <span className={`font-black text-white/90 uppercase tracking-tighter ${isCeo ? 'text-6xl' : 'text-5xl'}`}>
+                                        {member.name.charAt(0)}
+                                    </span>
+                                </>
+                            )}
                         </div>
 
                         {/* Info */}
@@ -92,8 +100,12 @@ function MemberCard({ member, isCeo = false }: { member: TeamMember; isCeo?: boo
 
             <SheetContent side="right" className="bg-background/95 backdrop-blur-xl border-indigo/10 sm:max-w-md w-full">
                 <SheetHeader className="mt-8 text-left">
-                    <div className={`w-24 h-24 mb-6 flex items-center justify-center bg-gradient-to-br flex-shrink-0 ${getAvatarGradient(member.name)} rounded-2xl shadow-lg`}>
-                        <span className="text-4xl font-black text-white/90 uppercase">{member.name.charAt(0)}</span>
+                    <div className={`w-24 h-24 mb-6 flex items-center justify-center bg-gradient-to-br flex-shrink-0 ${getAvatarGradient(member.name)} overflow-hidden rounded-2xl shadow-lg`}>
+                        {member.image ? (
+                            <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                        ) : (
+                            <span className="text-4xl font-black text-white/90 uppercase">{member.name.charAt(0)}</span>
+                        )}
                     </div>
                     <SheetTitle className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo via-indigo-light to-white mb-2">{member.name}</SheetTitle>
                     <SheetDescription className="text-lg font-medium text-orange mb-8">
