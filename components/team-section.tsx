@@ -146,24 +146,25 @@ export function TeamSection() {
         tl.to({}, { duration: 0.5 });
 
         // --- Click to Scroll Interaction ---
+        const clickHandlers: (() => void)[] = [];
         listItems.forEach((item, i) => {
-            item.addEventListener('click', () => {
+            const handler = () => {
                 const st = tl.scrollTrigger;
                 if (!st) return;
 
-                // Calculate progress: 0 for first, mapped value for others
-                const progress = i === 0 ? 0 : tl.labels[`step${i}`] / tl.duration();
+                // Calculate progress: 0 for first. For others, use label + animation duration (1.5)
+                // so it scrolls to the point where the card is fully visible, not just starting to transition.
+                const progress = i === 0 ? 0 : (tl.labels[`step${i}`] + 1.5) / tl.duration();
                 const targetScroll = st.start + (st.end - st.start) * progress;
 
-                // Smoothly animate window scroll
-                const scrollProxy = { y: window.scrollY };
-                gsap.to(scrollProxy, {
-                    y: targetScroll,
-                    duration: 1.2,
-                    ease: "power3.inOut",
-                    onUpdate: () => window.scrollTo(0, scrollProxy.y)
+                // Native smooth scroll works perfectly with html { scroll-behavior: smooth }
+                window.scrollTo({
+                    top: targetScroll,
+                    behavior: 'smooth'
                 });
-            });
+            };
+            item.addEventListener('click', handler);
+            clickHandlers.push(handler);
         });
 
         // --- Interactive Parallax based on Mouse Movement ---
@@ -184,7 +185,11 @@ export function TeamSection() {
 
         const currentRef = sectionRef.current;
         currentRef.addEventListener('mousemove', handleMouseMove);
-        return () => currentRef.removeEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            currentRef.removeEventListener('mousemove', handleMouseMove);
+            listItems.forEach((item, i) => item.removeEventListener('click', clickHandlers[i]));
+        };
 
     }, { scope: sectionRef })
 
